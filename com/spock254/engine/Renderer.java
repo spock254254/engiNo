@@ -3,10 +3,11 @@ package com.spock254.engine;
 import com.spock254.engine.gfx.Font;
 import com.spock254.engine.gfx.Image;
 import com.spock254.engine.gfx.ImageTile;
+import com.spock254.engine.interfaces.Rendering;
 
 import java.awt.image.DataBufferInt;
 
-public class Renderer {
+public class Renderer implements Rendering {
 
     private int pH,pW;
     private int[] p;
@@ -19,21 +20,24 @@ public class Renderer {
         p = ((DataBufferInt)gc.getWindow().getImage().getRaster().getDataBuffer()).getData();
 
     }
+    @Override
     public void clear(){
         for (int i = 0;i < p.length;i++){
             p[i] = 1;
         }
 
     }
+    @Override
     public void setPixel(int x,int y,int value){
-
-        if((x < 0 || x >= pW || y < 0 || y >= pH) || value == 0xffff00ff){
+                                                        // alpha
+        if((x < 0 || x >= pW || y < 0 || y >= pH) || ((value >> 24) & 0xff) == 0){
 
             return;
         }
 
         p[x + y * pW] = value; //set pix from two dem to one dem
     }
+    @Override
     public void drawText(String text,int offX,int offY,int color){
 
         Image fontImage = font.getFontImage();
@@ -54,7 +58,7 @@ public class Renderer {
         }
 
     }
-
+    @Override
     public void drawImage(Image image,int offX,int offY){
 
         if(offX < -image.getWidth()) return;
@@ -80,6 +84,7 @@ public class Renderer {
         }
 
     }
+    @Override
     public void  drawImageTile(ImageTile image,int offX,int offY,int tileX, int tileY){
 
         if(offX < -image.getTileW()) return;
@@ -106,4 +111,28 @@ public class Renderer {
         }
 
     }
+    @Override
+    public void drawRect(int offX,int offY,int width,int height,int color){
+        for (int y = 0;y <= height;y++){
+
+            setPixel(offX,y + offY,color);
+            setPixel(offX + width,y + offY,color);
+        }
+        for (int x = 0;x <= width;x++){
+            setPixel(x + offX,offY,color);
+            setPixel(x + offX,offY + height,color);
+        }
+
+    }
+
+    @Override
+    public void drawFilledRect(int offX, int offY, int width, int height, int color) {
+
+        //TODO : don't draw far then screen position
+
+        for (int y = 0;y <= height;y++)
+            for (int x = 0;x <= width;x++)
+                setPixel(x + offX,y + offY,color);
+    }
+
 }

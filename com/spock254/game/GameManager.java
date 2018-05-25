@@ -33,8 +33,7 @@ public class GameManager extends AbstractGame {
     @Override
     public void render(GameContainer gameContainer, Renderer renderer) {
 
-       // renderer.drawImage(image,0,0);
-        //renderer.drawImageTile(image,0 ,0,temp2,0);
+        renderer.drawFilledRect(10,10,100,55,0xff0000ff);
     }
 
     public static void main(String[] args){
