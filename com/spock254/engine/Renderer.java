@@ -37,7 +37,8 @@ public class Renderer implements Rendering {
 
         p[x + y * pW] = value; //set pix from two dem to one dem
     }
-    @Override
+    /*
+    //@Override
     public void drawText(String text,int offX,int offY,int color){
 
         Image fontImage = font.getFontImage();
@@ -58,7 +59,7 @@ public class Renderer implements Rendering {
         }
 
     }
-    @Override
+    //@Override
     public void drawImage(Image image,int offX,int offY){
 
         if(offX < -image.getWidth()) return;
@@ -84,7 +85,8 @@ public class Renderer implements Rendering {
         }
 
     }
-    @Override
+    //@Override
+
     public void  drawImageTile(ImageTile image,int offX,int offY,int tileX, int tileY){
 
         if(offX < -image.getTileW()) return;
@@ -111,7 +113,8 @@ public class Renderer implements Rendering {
         }
 
     }
-    @Override
+
+    //@Override
     public void drawRect(int offX,int offY,int width,int height,int color){
         for (int y = 0;y <= height;y++){
 
@@ -125,7 +128,7 @@ public class Renderer implements Rendering {
 
     }
 
-    @Override
+    //@Override
     public void drawFilledRect(int offX, int offY, int width, int height, int color) {
 
         //TODO : don't draw far then screen position
@@ -134,5 +137,29 @@ public class Renderer implements Rendering {
             for (int x = 0;x <= width;x++)
                 setPixel(x + offX,y + offY,color);
     }
+    */
 
+    public int getpH() {
+        return pH;
+    }
+
+    public void setpH(int pH) {
+        this.pH = pH;
+    }
+
+    public int getpW() {
+        return pW;
+    }
+
+    public void setpW(int pW) {
+        this.pW = pW;
+    }
+
+    public int[] getP() {
+        return p;
+    }
+
+    public void setP(int[] p) {
+        this.p = p;
+    }
 }

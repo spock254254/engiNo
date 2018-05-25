@@ -32,6 +32,8 @@ public class GameContainer implements Runnable{
         renderer = new Renderer(this);
         input = new Input(this);
 
+        abstractGame.setUp(this);
+
         tread = new Thread(this);
         tread.run();
     }
@@ -88,7 +90,7 @@ public class GameContainer implements Runnable{
             {
                 renderer.clear();
                 abstractGame.render(this,renderer);
-                renderer.drawText("FPS : "+fps,0,0,0xff00ffff);
+                //renderer.drawText("FPS : "+fps,0,0,0xff00ffff); //TODO : fix drawText class
                 window.update();
                 frames++;
             }else {
