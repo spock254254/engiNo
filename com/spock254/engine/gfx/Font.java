@@ -1,6 +1,8 @@
 package com.spock254.engine.gfx;
 
-public class Font {
+import com.spock254.engine.interfaces.gfx.IFont;
+
+public class Font  implements IFont {
 
     public static final Font STANDART = new Font("/res/standart.png");
 
@@ -31,27 +33,27 @@ public class Font {
     public static Font getSTANDART() {
         return STANDART;
     }
-
+    @Override
     public Image getFontImage() {
         return fontImage;
     }
-
+    @Override
     public void setFontImage(Image fontImage) {
         this.fontImage = fontImage;
     }
-
+    @Override
     public int[] getOffsets() {
         return offsets;
     }
-
+    @Override
     public void setOffsets(int[] offsets) {
         this.offsets = offsets;
     }
-
+    @Override
     public int[] getWidths() {
         return widths;
     }
-
+    @Override
     public void setWidths(int[] widths) {
         this.widths = widths;
     }

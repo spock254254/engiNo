@@ -5,12 +5,13 @@ import com.spock254.engine.Renderer;
 import com.spock254.engine.gfx.Font;
 import com.spock254.engine.interfaces.draw.DrawingText;
 import com.spock254.engine.gfx.Image;
+import com.spock254.engine.interfaces.gfx.IFont;
 
 public class Text  extends Renderer implements DrawingText {
 
-    private Font font;
+    private IFont font;
 
-    public Text(GameContainer gameContainer, Font font){
+    public Text(GameContainer gameContainer, IFont font){
         super(gameContainer);
         this.font = font;
     }

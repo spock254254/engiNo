@@ -4,14 +4,18 @@ import com.spock254.engine.GameContainer;
 import com.spock254.engine.Renderer;
 import com.spock254.engine.gfx.ImageTile;
 import com.spock254.engine.interfaces.draw.DrawingImageTitle;
+import com.spock254.engine.interfaces.gfx.IImage;
+import com.spock254.engine.interfaces.gfx.IImageTile;
 
 public class ImageTitle extends Renderer implements DrawingImageTitle {
 
-    private ImageTile image;
-
-    public ImageTitle(GameContainer gc,ImageTile imageTile){
+    private IImageTile image;
+    //private IImage baseImage;
+    // TODO : implement interface correctly and use it like ctr arg
+    public ImageTitle(GameContainer gc,IImageTile imageTile){
         super(gc);
         this.image = imageTile;
+        //baseImage = (IImage) image;
     }
 
     public void drawImageTile(int offX, int offY, int tileX, int tileY){

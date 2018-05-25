@@ -3,12 +3,13 @@ package com.spock254.engine.draw;
 import com.spock254.engine.GameContainer;
 import com.spock254.engine.Renderer;
 import com.spock254.engine.interfaces.draw.DrawingImage;
+import com.spock254.engine.interfaces.gfx.IImage;
 
 public class Image extends Renderer implements DrawingImage {
 
-    com.spock254.engine.gfx.Image image;
+    IImage image;
 
-    public Image(GameContainer gc, com.spock254.engine.gfx.Image image){
+    public Image(GameContainer gc, IImage image){
         super(gc);
         this.image = image;
     }

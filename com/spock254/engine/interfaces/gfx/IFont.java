@@ -1,5 +1,15 @@
 package com.spock254.engine.interfaces.gfx;
 
+import com.spock254.engine.gfx.Font;
+import com.spock254.engine.gfx.Image;
+
 public interface IFont {
-//TODO : split font class
+
+    public Image getFontImage();
+    public void setFontImage(Image fontImage);
+    public int[] getOffsets();
+    public void setOffsets(int[] offsets);
+    public int[] getWidths();
+    public void setWidths(int[] widths);
+
 }
