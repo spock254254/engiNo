@@ -1,12 +1,9 @@
-package com.spock254.audio;
+package com.spock254.engine.audio;
 
 import javax.sound.sampled.*;
-import javafx.scene.media.AudioClip;
 import java.io.BufferedInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 
 public class SoundClip {
 

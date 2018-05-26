@@ -5,12 +5,12 @@ import com.spock254.engine.Renderer;
 import com.spock254.engine.interfaces.draw.IDrawingImageTitle;
 import com.spock254.engine.interfaces.gfx.IImageTile;
 
-public class ImageTitleDrawI extends Renderer implements IDrawingImageTitle {
+public class ImageTitleDraw extends Renderer implements IDrawingImageTitle {
 
     private IImageTile image;
     //private IImage baseImage;
     // TODO : implement interface correctly and use it like ctr arg
-    public ImageTitleDrawI(GameContainer gc, IImageTile imageTile){
+    public ImageTitleDraw(GameContainer gc, IImageTile imageTile){
         super(gc);
         this.image = imageTile;
         //baseImage = (IImage) image;
@@ -34,8 +34,8 @@ public class ImageTitleDrawI extends Renderer implements IDrawingImageTitle {
 
 
         for(int y = newX;y < newHeight;y++){
-            for (int x = newY;x < newWidth;x++){
-                setPixel(x + offX,y + offY,image.getPixels()[(x + tileX * image.getTileH())
+            for (int x = newY;x < newWidth;x++){                                // H
+                setPixel(x + offX,y + offY,image.getPixels()[(x + tileX * image.getTileW())
                         + (y + tileY * image.getTileH()) * image.getWidth()]);
             }
         }

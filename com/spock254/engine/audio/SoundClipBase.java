@@ -1,4 +1,4 @@
-package com.spock254.audio;
+package com.spock254.engine.audio;
 
 import javafx.scene.media.AudioClip;
 
