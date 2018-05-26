@@ -2,9 +2,10 @@ package com.spock254.engine.anim;
 
 import com.spock254.engine.GameContainer;
 import com.spock254.engine.draw.ImageTitleDraw;
+import com.spock254.engine.interfaces.anim.IAnimation;
 import com.spock254.engine.interfaces.gfx.IImageTile;
 
-public class Animation extends ImageTitleDraw {
+public class Animation extends ImageTitleDraw implements IAnimation {
 
     private int animSpeed;
     private int animoffX, animoffY;
@@ -21,7 +22,7 @@ public class Animation extends ImageTitleDraw {
         this.line = line;
         this.row = row;
     }
-
+    @Override
     public void startAnim(int frames){
 
         if(frames % animSpeed == 0)
@@ -36,7 +37,21 @@ public class Animation extends ImageTitleDraw {
         System.out.println(frames+" : "+ currentRow+" : "+ currentLint);
         super.drawImageTile(animoffX,animoffY,currentRow,currentLint);
     }
+    // TODO : implement animation int
+    @Override
+    public void reset() {
 
+    }
+
+    @Override
+    public void stop() {
+
+    }
+
+    @Override
+    public boolean isRunning() {
+        return false;
+    }
 
 
     public int getAnimoffX() {

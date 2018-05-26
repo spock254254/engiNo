@@ -28,6 +28,12 @@ public class Font  implements IFont {
                 unicode++;
             }
         }
+
+    }
+    @Override
+    public void getTextPixelLength(String str){
+        //for(int i = 0; i < widths.length;i++)
+        
     }
 
     public static Font getSTANDART() {

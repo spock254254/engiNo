@@ -11,5 +11,6 @@ public interface IFont {
     public void setOffsets(int[] offsets);
     public int[] getWidths();
     public void setWidths(int[] widths);
+    public void getTextPixelLength(String str);
 
 }

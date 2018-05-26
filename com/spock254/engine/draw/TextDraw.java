@@ -6,11 +6,11 @@ import com.spock254.engine.interfaces.draw.IDrawingText;
 import com.spock254.engine.gfx.Image;
 import com.spock254.engine.interfaces.gfx.IFont;
 
-public class TextDrawI extends Renderer implements IDrawingText {
+public class TextDraw extends Renderer implements IDrawingText {
 
     private IFont font;
 
-    public TextDrawI(GameContainer gameContainer, IFont font){
+    public TextDraw(GameContainer gameContainer, IFont font){
         super(gameContainer);
         this.font = font;
     }
@@ -35,6 +35,14 @@ public class TextDrawI extends Renderer implements IDrawingText {
             offset += font.getWidths()[unicode];
         }
 
+    }
+    @Override
+    public IFont getFont() {
+        return font;
+    }
+    @Override
+    public void setFont(IFont font) {
+        this.font = font;
     }
 
 }
