@@ -6,6 +6,7 @@ import com.spock254.engine.AbstractGame;
 import com.spock254.engine.GameContainer;
 import com.spock254.engine.Renderer;
 import com.spock254.engine.draw.*;
+import com.spock254.engine.draw.drawtools.OrderDraw;
 import com.spock254.engine.gfx.Font;
 import com.spock254.engine.gfx.Image;
 import com.spock254.engine.gfx.ImageTile;
@@ -16,6 +17,7 @@ import com.spock254.engine.interfaces.draw.DrawingText;
 import com.spock254.engine.interfaces.gfx.IFont;
 import com.spock254.engine.interfaces.gfx.IImage;
 import com.spock254.engine.interfaces.gfx.IImageTile;
+import com.sun.org.apache.bcel.internal.generic.CHECKCAST;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,6 +32,7 @@ public class GameManager extends AbstractGame {
     IImage image2;
     DrawingImage drawingImage;
     DrawingImage drawingImage2;
+    OrderDraw orderDraw;
 
     public GameManager(){
 
@@ -42,8 +45,19 @@ public class GameManager extends AbstractGame {
     @Override
     public void setUp(GameContainer gameContainer) {
 
-        drawingImage = new ImageDraw(gameContainer,image);
-        drawingImage2 = new ImageDraw(gameContainer,image2);
+        orderDraw = new OrderDraw();
+        DrawingImage drawingImage1 = new ImageDraw(gameContainer,new Image("/res/hart.png"));
+        drawingImage1.setzDapth(0);
+        DrawingImage drawingImage2 = new ImageDraw(gameContainer,new Image("/res/standart.png"));
+        drawingImage2.setzDapth(1);
+        DrawingImage drawingImage3 = new ImageDraw(gameContainer,new Image("/res/Untitled.png"));
+        drawingImage3.setzDapth(2);
+        orderDraw.add(drawingImage1);
+        orderDraw.add(drawingImage2);
+        orderDraw.add(drawingImage3);
+        orderDraw.sort();
+
+
     }
 
 
@@ -51,18 +65,14 @@ public class GameManager extends AbstractGame {
     public void update(GameContainer gameContainer, float deltaTime) {
         //if(gameContainer.getInput().isKeyDown(KeyEvent.VK_A)) i++;
 
+
     }
 
     @Override
     public void render(GameContainer gameContainer, Renderer renderer) {
 
-        //drawingImage.setzDapth(3);
-        //drawingImage2.setzDapth(2);
-       // drawingImage.process();
-        //drawingImage2.process();
-        drawingImage.drawImage(10,10);
-        drawingImage2.drawImage(15,15);
 
+        orderDraw.draw();
 
     }
 

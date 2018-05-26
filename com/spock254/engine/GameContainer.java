@@ -19,6 +19,7 @@ public class GameContainer implements Runnable{
     private int height = 240;//(int)ScreenSize.getSizeScreen().getHeight();
     private float scale = 2f;
     private String title = "engineNo";
+    private int fps;
 
     public GameContainer(){}
 
@@ -56,7 +57,7 @@ public class GameContainer implements Runnable{
 
         double frameTime = 0;
         int frames = 0;
-        int fps = 0;
+        fps = 0;
 
         while (isRunning){
             render = false;
@@ -147,4 +148,6 @@ public class GameContainer implements Runnable{
     public Input getInput() {
         return input;
     }
+
+    public int getFps(){ return fps; }
 }
