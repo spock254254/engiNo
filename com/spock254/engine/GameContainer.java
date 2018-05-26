@@ -1,10 +1,5 @@
 package com.spock254.engine;
 
-import com.spock254.helper.ScreenSize;
-
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-
 public class GameContainer implements Runnable{
 
     private Thread tread;

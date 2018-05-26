@@ -52,8 +52,8 @@ public class GameManager extends AbstractGame {
 
     @Override
     public void setUp(GameContainer gameContainer) {
-        animation = new Animation(gameContainer,new ImageTile("/res/images.png",25,25)
-                ,10,10,10,1,9);
+        animation = new Animation(gameContainer,new ImageTile("/res/sb.png",71,110)
+                ,10,10,10,1,5);
 
     }
 

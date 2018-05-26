@@ -6,10 +6,12 @@ import com.spock254.engine.interfaces.gfx.IImageTile;
 
 public class Animation extends ImageTitleDraw {
 
-    private int counter = 0;
     private int animSpeed;
     private int animoffX, animoffY;
     private int line,row;
+
+    private int currentLint = 0;
+    private int currentRow = 0;
 
     public Animation(GameContainer gc, IImageTile imageTile,int animSpeed,int animoffX,int animoffY,int line,int row) {
         super(gc, imageTile);
@@ -22,16 +24,20 @@ public class Animation extends ImageTitleDraw {
 
     public void startAnim(int frames){
 
-
-        if(frames % animSpeed == 0){
-            counter++;
-        }if(counter > row)
-            counter = 0;
-        //if (t > 500)
-        //    t = 0;
-        System.out.println(frames+" : "+ counter);
-        super.drawImageTile(animoffX,animoffY,counter,1);
+        if(frames % animSpeed == 0)
+            currentRow++;
+        if(currentRow >= row){
+            currentRow = 0;
+            if(currentLint < line - 1)
+                currentLint++;
+            else
+                currentLint = 0;
+        }
+        System.out.println(frames+" : "+ currentRow+" : "+ currentLint);
+        super.drawImageTile(animoffX,animoffY,currentRow,currentLint);
     }
+
+
 
     public int getAnimoffX() {
         return animoffX;
