@@ -1,6 +1,7 @@
 package com.spock254.engine.draw.drawtools;
 
 import com.spock254.engine.interfaces.draw.DrawingImage;
+import com.spock254.engine.interfaces.draw.drawtools.IOffSetDrawManager;
 import com.spock254.engine.interfaces.gfx.IImage;
 
 import java.util.ArrayList;
@@ -9,30 +10,29 @@ import java.util.Comparator;
 
 public class OrderDraw {
 
-    private ArrayList<DrawingImage> images = new ArrayList<>();;
+    private ArrayList<IOffSetDrawManager> images = new ArrayList<>();
 
     public void OrderDraw(){
 
     }
 
-    public void add(DrawingImage image){
+    public void add(IOffSetDrawManager image){
         images.add(image);
     }
+
     public void sort(){
-        Collections.sort(images, new Comparator<DrawingImage>(){
-            public int compare(DrawingImage o1, DrawingImage o2){
-                if(o1.getzDapth() == o2.getzDapth())
+        Collections.sort(images, new Comparator<IOffSetDrawManager>(){
+            public int compare(IOffSetDrawManager o1, IOffSetDrawManager o2){
+                if(o1.getDrawingImage().getzDapth() == o2.getDrawingImage().getzDapth())
                     return 0;
-                return o1.getzDapth() < o2.getzDapth() ? -1 : 1;
+                return o1.getDrawingImage().getzDapth() < o2.getDrawingImage().getzDapth() ? -1 : 1;
             }
         });
-        for(DrawingImage drawingImage : images){
-            System.out.println(drawingImage.getzDapth());
-        }
+
     }
     //TODO : test draw
     public void draw(){
-        for(DrawingImage drawingImage : images)
-            drawingImage.drawImage(0,0);
+        for(IOffSetDrawManager offSetDrawManager : images)
+            offSetDrawManager.getDrawingImage().drawImage(offSetDrawManager.getOffX(),offSetDrawManager.getOffY());
     }
 }

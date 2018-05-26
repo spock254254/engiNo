@@ -6,6 +6,7 @@ import com.spock254.engine.AbstractGame;
 import com.spock254.engine.GameContainer;
 import com.spock254.engine.Renderer;
 import com.spock254.engine.draw.*;
+import com.spock254.engine.draw.drawtools.OffSetDrawManager;
 import com.spock254.engine.draw.drawtools.OrderDraw;
 import com.spock254.engine.gfx.Font;
 import com.spock254.engine.gfx.Image;
@@ -14,6 +15,7 @@ import com.spock254.engine.interfaces.Rendering;
 import com.spock254.engine.interfaces.draw.DrawingImage;
 import com.spock254.engine.interfaces.draw.DrawingImageTitle;
 import com.spock254.engine.interfaces.draw.DrawingText;
+import com.spock254.engine.interfaces.draw.drawtools.IOffSetDrawManager;
 import com.spock254.engine.interfaces.gfx.IFont;
 import com.spock254.engine.interfaces.gfx.IImage;
 import com.spock254.engine.interfaces.gfx.IImageTile;
@@ -30,6 +32,7 @@ public class GameManager extends AbstractGame {
 
     IImage image;
     IImage image2;
+    IImage image3;
     DrawingImage drawingImage;
     DrawingImage drawingImage2;
     OrderDraw orderDraw;
@@ -38,6 +41,7 @@ public class GameManager extends AbstractGame {
 
         image = new Image("/res/Untitled.png");
         image2 = new Image("/res/hart.png");
+        image3 = new Image("/res/standart.png");
         //image.setAlpha(true);
        // image = new Image("/res/thief_boy_drbl.png");
     }
@@ -45,6 +49,15 @@ public class GameManager extends AbstractGame {
     @Override
     public void setUp(GameContainer gameContainer) {
 
+        orderDraw = new OrderDraw();
+        IOffSetDrawManager drawManager1 = new OffSetDrawManager(new ImageDraw(gameContainer,image),20,20,3);
+        IOffSetDrawManager drawManager2 = new OffSetDrawManager(new ImageDraw(gameContainer,image2),15,10,0);
+        IOffSetDrawManager drawManager3 = new OffSetDrawManager(new ImageDraw(gameContainer,image3),10,15,1);
+        orderDraw.add(drawManager1);
+        orderDraw.add(drawManager2);
+        orderDraw.add(drawManager3);
+        orderDraw.sort();
+        /*
         orderDraw = new OrderDraw();
         DrawingImage drawingImage1 = new ImageDraw(gameContainer,new Image("/res/hart.png"));
         drawingImage1.setzDapth(0);
@@ -56,6 +69,7 @@ public class GameManager extends AbstractGame {
         orderDraw.add(drawingImage2);
         orderDraw.add(drawingImage3);
         orderDraw.sort();
+        */
 
 
     }
