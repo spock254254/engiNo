@@ -60,12 +60,8 @@ public class GameManager extends AbstractGame {
 int i = 0;
     @Override
     public void update(GameContainer gameContainer, float deltaTime) {
-
-
-        //animation.setAnimoffX(i % 25);
-
-        i +=1;
-        if (i > 1000)
+        i++;
+        if(i > 1000)
             i = 0;
     }
 
