@@ -45,4 +45,15 @@ public class TextDraw extends Renderer implements IDrawingText {
         this.font = font;
     }
 
+    //@Override
+    //public int getTextPixelSize(String text) {
+     //   int pixSize = 0;
+     //   for(int i = 0;i < text.length(); i++){
+     //       int unicode = text.codePointAt(i) - 32;
+     //       System.out.println(unicode);
+     //       //pixSize += getFont().getWidths()[unicode];
+     //   }
+     //   return pixSize;
+    //}
+
 }

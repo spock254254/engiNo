@@ -11,6 +11,7 @@ import com.spock254.engine.ui.BasicButton;
 public class GameManager extends AbstractGame {
 
     BasicButton button;
+    BasicButton button2;
 
     public GameManager(){
 
@@ -18,9 +19,13 @@ public class GameManager extends AbstractGame {
 
     @Override
     public void setUp(GameContainer gameContainer) {
-        button = new BasicButton(gameContainer,new RectFilledDraw(gameContainer),new TextDraw(gameContainer,new Font("/res/standart.png")),
-                                10,10,40,20,0xffE6118A,
-                                "Start",19,17,0xff2B0B1D);
+        //button = new BasicButton(gameContainer,new RectFilledDraw(gameContainer),new TextDraw(gameContainer,new Font("/res/standart.png")),
+          //                      10,10,40,20,0xffE6118A,
+            //                    "Start",19,17,0xff2B0B1D);
+
+        button2 = new BasicButton(gameContainer,new RectFilledDraw(gameContainer),new TextDraw(gameContainer,new Font("/res/standart.png")),
+                50,10,60,15,0xffE6118A,
+                "Start",0xff2B0B1D);
 
     }
 
@@ -32,7 +37,7 @@ public class GameManager extends AbstractGame {
 
     @Override
     public void render(GameContainer gameContainer, Renderer renderer) {
-        button.drawButton();
+        button2.drawButton();
 
     }
 

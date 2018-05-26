@@ -25,15 +25,25 @@ public class Font  implements IFont {
             }
             if(fontImage.getPixels()[i] == 0xffffff00){
                 widths[unicode] = i - offsets[unicode];
+                //System.out.println(widths[unicode]);
                 unicode++;
             }
         }
 
     }
     @Override
-    public void getTextPixelLength(String str){
-        //for(int i = 0; i < widths.length;i++)
-        
+    public int getTextPixelWeight(String str){
+        int size = 0;
+        str = str.toUpperCase();
+        for(int i = 0; i < str.length();i ++){
+            size += widths[str.codePointAt(i) - 32];
+        }
+        return size;
+    }
+
+    @Override
+    public int getTextPixelHeight(String str) {
+        return fontImage.getHeight();
     }
 
     public static Font getSTANDART() {

@@ -48,8 +48,8 @@ public class BasicButton {
         this.buttonH = buttonH;
         this.buttonColor = buttonColor;
         this.buttonText = buttonText;
-        //this.textOffX = text.getFont().getWidths() // TODO : get btn center and put text
-        //this.textOffY = textOffY;
+        this.textOffX = ((buttonW - text.getFont().getTextPixelWeight(buttonText)) / 2) + buttonOffX;
+        this.textOffY = (buttonH - (text.getFont().getTextPixelHeight(buttonText)) / 2) + buttonOffY; // TODO
         this.textColor = textColor;
     }
 
