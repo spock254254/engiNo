@@ -1,42 +1,42 @@
 package com.spock254.game;
 
-import com.spock254.audio.SoundClip;
-import com.spock254.audio.SoundClipBase;
 import com.spock254.engine.AbstractGame;
 import com.spock254.engine.GameContainer;
 import com.spock254.engine.Renderer;
-import com.spock254.engine.draw.*;
-import com.spock254.engine.draw.drawtools.OffSetDrawManager;
-import com.spock254.engine.draw.drawtools.OrderDraw;
-import com.spock254.engine.gfx.Font;
+import com.spock254.engine.draw.RectDraw;
+import com.spock254.engine.draw.RectFilledDraw;
+import com.spock254.engine.draw.order.OrderDrawShape;
+import com.spock254.engine.draw.order.OrderImageContainer;
+import com.spock254.engine.draw.order.OrderShapeContainer;
 import com.spock254.engine.gfx.Image;
-import com.spock254.engine.gfx.ImageTile;
-import com.spock254.engine.interfaces.Rendering;
-import com.spock254.engine.interfaces.draw.DrawingImage;
-import com.spock254.engine.interfaces.draw.DrawingImageTitle;
-import com.spock254.engine.interfaces.draw.DrawingText;
-import com.spock254.engine.interfaces.draw.drawtools.IOffSetDrawManager;
-import com.spock254.engine.interfaces.gfx.IFont;
+import com.spock254.engine.interfaces.draw.IDrawingShape;
+import com.spock254.engine.interfaces.draw.IDrawingImage;
+import com.spock254.engine.interfaces.draw.IDrawingImageTitle;
+import com.spock254.engine.interfaces.draw.order.IOrderDrawShape;
 import com.spock254.engine.interfaces.gfx.IImage;
 import com.spock254.engine.interfaces.gfx.IImageTile;
-import com.sun.org.apache.bcel.internal.generic.CHECKCAST;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 public class GameManager extends AbstractGame {
 
     IImageTile imageTile;
-    DrawingImageTitle drawingImageTitle;
+    IDrawingImageTitle IDrawingImageTitle;
 
     IImage image;
     IImage image2;
     IImage image3;
-    DrawingImage drawingImage;
-    DrawingImage drawingImage2;
-    OrderDraw orderDraw;
+    IDrawingImage IDrawingImage;
+    IDrawingImage IDrawingImage2;
+    OrderImageContainer orderImageContainer;
 
+    IDrawingShape filledRect;
+    IDrawingShape rect;
+
+    OrderShapeContainer shapeContainer;
+
+    IOrderDrawShape drawShape1;
+    IOrderDrawShape drawShape2;
     public GameManager(){
 
         image = new Image("/res/Untitled.png");
@@ -49,36 +49,35 @@ public class GameManager extends AbstractGame {
     @Override
     public void setUp(GameContainer gameContainer) {
 
-        orderDraw = new OrderDraw();
-        IOffSetDrawManager drawManager1 = new OffSetDrawManager(new ImageDraw(gameContainer,image),20,20,3);
-        IOffSetDrawManager drawManager2 = new OffSetDrawManager(new ImageDraw(gameContainer,image2),15,10,0);
-        IOffSetDrawManager drawManager3 = new OffSetDrawManager(new ImageDraw(gameContainer,image3),10,15,1);
-        orderDraw.add(drawManager1);
-        orderDraw.add(drawManager2);
-        orderDraw.add(drawManager3);
-        orderDraw.sort();
-        /*
-        orderDraw = new OrderDraw();
-        DrawingImage drawingImage1 = new ImageDraw(gameContainer,new Image("/res/hart.png"));
-        drawingImage1.setzDapth(0);
-        DrawingImage drawingImage2 = new ImageDraw(gameContainer,new Image("/res/standart.png"));
-        drawingImage2.setzDapth(1);
-        DrawingImage drawingImage3 = new ImageDraw(gameContainer,new Image("/res/Untitled.png"));
-        drawingImage3.setzDapth(2);
-        orderDraw.add(drawingImage1);
-        orderDraw.add(drawingImage2);
-        orderDraw.add(drawingImage3);
-        orderDraw.sort();
-        */
+        filledRect = new RectFilledDraw(gameContainer);
+        rect = new RectDraw(gameContainer);
+
+
+        drawShape1 = new OrderDrawShape(filledRect,10,10,100,120,0xff121CAB,1);
+        drawShape2 = new OrderDrawShape(rect,12,15,50,100,0xff37BFAD,2);
+
+        shapeContainer = new OrderShapeContainer();
+        shapeContainer.add(drawShape1);
+        shapeContainer.add(drawShape2);
+        shapeContainer.sort();
+
+        /*orderImageContainer = new OrderImageContainer();
+        IOrderDrawImage drawManager1 = new OrderDrawImage(new ImageDraw(gameContainer,image),20,20,3);
+        IOrderDrawImage drawManager2 = new OrderDrawImage(new ImageDraw(gameContainer,image2),15,10,0);
+        IOrderDrawImage drawManager3 = new OrderDrawImage(new ImageDraw(gameContainer,image3),10,15,1);
+        orderImageContainer.add(drawManager1);
+        orderImageContainer.add(drawManager2);
+        orderImageContainer.add(drawManager3);
+        orderImageContainer.sort();*/
+
 
 
     }
 
-
+//int i = 0;
     @Override
     public void update(GameContainer gameContainer, float deltaTime) {
-        //if(gameContainer.getInput().isKeyDown(KeyEvent.VK_A)) i++;
-
+//        if(gameContainer.getInput().isKeyDown(KeyEvent.VK_A)) i++;
 
     }
 
@@ -86,8 +85,12 @@ public class GameManager extends AbstractGame {
     public void render(GameContainer gameContainer, Renderer renderer) {
 
 
-        orderDraw.draw();
-
+        //orderImageContainer.draw();
+        //filledRect1.drawShape(10,10,100,150,0xff72F79A);
+        //filledRect2.drawShape(10,10,150,50,0xffFF7A5F);
+        //rect.drawShape(10,10,100,50,0xff72F79A);
+        //filledRect.drawShape(15,5,50,50,0xffFF7A5F);
+        shapeContainer.draw();
     }
 
     public static void main(String[] args){

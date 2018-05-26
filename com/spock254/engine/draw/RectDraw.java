@@ -2,9 +2,9 @@ package com.spock254.engine.draw;
 
 import com.spock254.engine.GameContainer;
 import com.spock254.engine.Renderer;
-import com.spock254.engine.interfaces.draw.DrawingRect;
+import com.spock254.engine.interfaces.draw.IDrawingShape;
 
-public class RectDraw extends Renderer implements DrawingRect {
+public class RectDraw extends Renderer implements IDrawingShape {
 
     public RectDraw(GameContainer gc) {
         super(gc);
@@ -12,7 +12,7 @@ public class RectDraw extends Renderer implements DrawingRect {
 
 
     @Override
-    public void drawRect(int offX, int offY, int width, int height, int color) {
+    public void drawShape(int offX, int offY, int width, int height, int color) {
         for (int y = 0;y <= height;y++){
 
             super.setPixel(offX,y + offY,color);
@@ -22,5 +22,15 @@ public class RectDraw extends Renderer implements DrawingRect {
             super.setPixel(x + offX,offY,color);
             super.setPixel(x + offX,offY + height,color);
         }
+    }
+
+    @Override
+    public int getZDapth() {
+        return super.getzDapth();
+    }
+
+    @Override
+    public void setZDapth(int zDapth) {
+        super.setzDapth(zDapth);
     }
 }

@@ -2,14 +2,10 @@ package com.spock254.engine.draw;
 
 import com.spock254.engine.GameContainer;
 import com.spock254.engine.Renderer;
-import com.spock254.engine.gfx.ImageRequest;
-import com.spock254.engine.interfaces.draw.DrawingImage;
+import com.spock254.engine.interfaces.draw.IDrawingImage;
 import com.spock254.engine.interfaces.gfx.IImage;
-import com.spock254.engine.interfaces.gfx.IImageRequest;
 
-import java.util.ArrayList;
-
-public class ImageDraw extends Renderer implements DrawingImage {
+public class ImageDraw extends Renderer implements IDrawingImage {
 
     IImage image;
     // TODO : overload ctr

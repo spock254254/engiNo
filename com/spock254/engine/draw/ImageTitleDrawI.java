@@ -2,17 +2,15 @@ package com.spock254.engine.draw;
 
 import com.spock254.engine.GameContainer;
 import com.spock254.engine.Renderer;
-import com.spock254.engine.gfx.ImageTile;
-import com.spock254.engine.interfaces.draw.DrawingImageTitle;
-import com.spock254.engine.interfaces.gfx.IImage;
+import com.spock254.engine.interfaces.draw.IDrawingImageTitle;
 import com.spock254.engine.interfaces.gfx.IImageTile;
 
-public class ImageTitleDraw extends Renderer implements DrawingImageTitle {
+public class ImageTitleDrawI extends Renderer implements IDrawingImageTitle {
 
     private IImageTile image;
     //private IImage baseImage;
     // TODO : implement interface correctly and use it like ctr arg
-    public ImageTitleDraw(GameContainer gc, IImageTile imageTile){
+    public ImageTitleDrawI(GameContainer gc, IImageTile imageTile){
         super(gc);
         this.image = imageTile;
         //baseImage = (IImage) image;

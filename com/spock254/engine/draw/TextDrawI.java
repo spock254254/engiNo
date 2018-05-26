@@ -2,16 +2,15 @@ package com.spock254.engine.draw;
 
 import com.spock254.engine.GameContainer;
 import com.spock254.engine.Renderer;
-import com.spock254.engine.gfx.Font;
-import com.spock254.engine.interfaces.draw.DrawingText;
+import com.spock254.engine.interfaces.draw.IDrawingText;
 import com.spock254.engine.gfx.Image;
 import com.spock254.engine.interfaces.gfx.IFont;
 
-public class TextDraw extends Renderer implements DrawingText {
+public class TextDrawI extends Renderer implements IDrawingText {
 
     private IFont font;
 
-    public TextDraw(GameContainer gameContainer, IFont font){
+    public TextDrawI(GameContainer gameContainer, IFont font){
         super(gameContainer);
         this.font = font;
     }
