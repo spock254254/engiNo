@@ -7,11 +7,11 @@ import com.spock254.engine.interfaces.draw.DrawingText;
 import com.spock254.engine.gfx.Image;
 import com.spock254.engine.interfaces.gfx.IFont;
 
-public class Text  extends Renderer implements DrawingText {
+public class TextDraw extends Renderer implements DrawingText {
 
     private IFont font;
 
-    public Text(GameContainer gameContainer, IFont font){
+    public TextDraw(GameContainer gameContainer, IFont font){
         super(gameContainer);
         this.font = font;
     }

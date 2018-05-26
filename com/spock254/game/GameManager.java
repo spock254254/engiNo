@@ -17,6 +17,8 @@ import com.spock254.engine.interfaces.gfx.IFont;
 import com.spock254.engine.interfaces.gfx.IImage;
 import com.spock254.engine.interfaces.gfx.IImageTile;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 public class GameManager extends AbstractGame {
@@ -25,33 +27,42 @@ public class GameManager extends AbstractGame {
     DrawingImageTitle drawingImageTitle;
 
     IImage image;
+    IImage image2;
     DrawingImage drawingImage;
+    DrawingImage drawingImage2;
 
     public GameManager(){
 
-        imageTile = new ImageTile("/res/thief_boy_drbl.png",100,100);
+        image = new Image("/res/Untitled.png");
+        image2 = new Image("/res/hart.png");
+        //image.setAlpha(true);
        // image = new Image("/res/thief_boy_drbl.png");
     }
 
     @Override
     public void setUp(GameContainer gameContainer) {
-       //drawingImageTitle = new ImageTitle(gameContainer,imageTile);
-       //drawingImageTitle.drawImageTile(10,10,0,0);
 
+        drawingImage = new ImageDraw(gameContainer,image);
+        drawingImage2 = new ImageDraw(gameContainer,image2);
     }
+
 
     @Override
     public void update(GameContainer gameContainer, float deltaTime) {
-
+        //if(gameContainer.getInput().isKeyDown(KeyEvent.VK_A)) i++;
 
     }
 
     @Override
     public void render(GameContainer gameContainer, Renderer renderer) {
-        drawingImageTitle = new ImageTitle(gameContainer,imageTile);
-        drawingImageTitle.drawImageTile(10,10,0,0);
-        //drawingImage = new com.spock254.engine.draw.Image(gameContainer,image);
-        //drawingImage.drawImage(10,10);
+
+        //drawingImage.setzDapth(3);
+        //drawingImage2.setzDapth(2);
+       // drawingImage.process();
+        //drawingImage2.process();
+        drawingImage.drawImage(10,10);
+        drawingImage2.drawImage(15,15);
+
 
     }
 

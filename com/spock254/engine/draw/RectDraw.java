@@ -4,9 +4,9 @@ import com.spock254.engine.GameContainer;
 import com.spock254.engine.Renderer;
 import com.spock254.engine.interfaces.draw.DrawingRect;
 
-public class Rect extends Renderer implements DrawingRect {
+public class RectDraw extends Renderer implements DrawingRect {
 
-    public Rect(GameContainer gc) {
+    public RectDraw(GameContainer gc) {
         super(gc);
     }
 

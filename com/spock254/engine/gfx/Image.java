@@ -9,6 +9,7 @@ import java.io.IOException;
 public class Image implements IImage {
     private int width,height;
     private int[] pixels;
+    private boolean isAlpha = false;
 
     public Image(String path){
 
@@ -49,5 +50,13 @@ public class Image implements IImage {
     @Override
     public void setPixels(int[] pixels) {
         this.pixels = pixels;
+    }
+    @Override
+    public boolean isAlpha() {
+        return isAlpha;
+    }
+    @Override
+    public void setAlpha(boolean alpha) {
+        isAlpha = alpha;
     }
 }

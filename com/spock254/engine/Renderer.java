@@ -4,38 +4,81 @@ import com.spock254.engine.gfx.Font;
 import com.spock254.engine.gfx.Image;
 import com.spock254.engine.gfx.ImageTile;
 import com.spock254.engine.interfaces.Rendering;
+import com.spock254.engine.interfaces.gfx.IImageRequest;
 
 import java.awt.image.DataBufferInt;
+import java.util.ArrayList;
 
 public class Renderer implements Rendering {
 
+    private final int MAX_ALPHA = 255;
+    private Font font = Font.STANDART;
+
+    protected ArrayList<IImageRequest> imageRequests = new ArrayList<>();
+    protected boolean processing = false;
+
+
     private int pH,pW;
     private int[] p;
+    private int[] zb;
+    private  int zDapth = 0;
 
-    private Font font = Font.STANDART;
 
     public Renderer(GameContainer gc){
         pH = gc.getHeight();
         pW = gc.getWidth();
         p = ((DataBufferInt)gc.getWindow().getImage().getRaster().getDataBuffer()).getData();
-
+        zb = new int[p.length];
     }
     @Override
     public void clear(){
         for (int i = 0;i < p.length;i++){
-            p[i] = 1;
+            p[i] = 0;
+            zb[i] = 0;
         }
 
     }
+
     @Override
     public void setPixel(int x,int y,int value){
-                                                        // alpha
-        if((x < 0 || x >= pW || y < 0 || y >= pH) || ((value >> 24) & 0xff) == 0){
 
+        int alpha = ((value >> 24) & 0xff);
+
+        if((x < 0 || x >= pW || y < 0 || y >= pH) || alpha == 0)
             return;
+        if(zb[x + y * pW] > zDapth)
+            return;
+
+
+        if(alpha == MAX_ALPHA){
+            p[x + y * pW] = value; //set pix from two dem to one dem
+        }else {
+
+            int pixelColor = p[x + y * pW];
+
+            int newRed = ((pixelColor >> 16) & 0xff) - (int)((((pixelColor >> 16) & 0xff) - ((value >> 16) & 0xff)) * (alpha / 255f));
+            int newGreen = ((pixelColor >> 8) & 0xff) - (int)((((pixelColor >> 8) & 0xff) - ((value >> 8) & 0xff)) * (alpha / 255f));
+            int newBlue = (pixelColor & 0xff) - (int)(((pixelColor & 0xff) - (value & 0xff)) * (alpha / 255f));
+
+            p[x + y * pW] = (255 << 24 | newRed << 16 | newGreen << 8 | newBlue);
         }
 
-        p[x + y * pW] = value; //set pix from two dem to one dem
+    }
+
+    @Override
+    public void process(){
+
+        processing = true;
+
+        for(int i = 0; i < imageRequests.size(); i ++){
+
+            IImageRequest ir = imageRequests.get(i);
+            setzDapth(ir.getzDepth());
+            //drawImage(ir.getOffX(),ir.getOffY()); // TODO : i think a problem is here
+
+        }
+        imageRequests.clear();
+        processing = false;
     }
     /*
     //@Override
@@ -138,28 +181,37 @@ public class Renderer implements Rendering {
                 setPixel(x + offX,y + offY,color);
     }
     */
-
+    @Override
     public int getpH() {
         return pH;
     }
-
+    @Override
     public void setpH(int pH) {
         this.pH = pH;
     }
-
+    @Override
     public int getpW() {
         return pW;
     }
-
+    @Override
     public void setpW(int pW) {
         this.pW = pW;
     }
-
+    @Override
     public int[] getP() {
         return p;
     }
-
+    @Override
     public void setP(int[] p) {
         this.p = p;
     }
+    @Override
+    public int getzDapth() {
+        return zDapth;
+    }
+    @Override
+    public void setzDapth(int zDapth) {
+        this.zDapth = zDapth;
+    }
+
 }

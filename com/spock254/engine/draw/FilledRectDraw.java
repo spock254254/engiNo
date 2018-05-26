@@ -4,9 +4,9 @@ import com.spock254.engine.GameContainer;
 import com.spock254.engine.Renderer;
 import com.spock254.engine.interfaces.draw.DrawingFilledRect;
 
-public class FilledRect extends Renderer implements DrawingFilledRect {
+public class FilledRectDraw extends Renderer implements DrawingFilledRect {
 
-    public FilledRect(GameContainer gc) {
+    public FilledRectDraw(GameContainer gc) {
         super(gc);
     }
 

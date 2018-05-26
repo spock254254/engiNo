@@ -7,4 +7,6 @@ public interface IImage {
     public void setHeight(int height);
     public int[] getPixels();
     public void setPixels(int[] pixels);
+    public boolean isAlpha();
+    public void setAlpha(boolean alpha);
 }
