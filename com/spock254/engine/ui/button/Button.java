@@ -62,12 +62,9 @@ public class Button extends BasicButton implements IButton {
             super.setButtonColor(this.btnColor.getHoverColor());
             super.setTextColor(this.textColor.getHoverColor());
             if(isBtnCliced(MouseEvent.BUTTON1)){
-                //System.out.println("Click");
                 super.setButtonColor(this.btnColor.getActiveColor());
                 super.setTextColor(this.textColor.getActiveColor());
             }
-            //System.out.println("START");
-
         }else {
             super.setButtonColor(initBtnColor);
             super.setTextColor(initTextColor);

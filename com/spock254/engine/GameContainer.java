@@ -1,5 +1,11 @@
 package com.spock254.engine;
 
+import com.spock254.engine.scene.SceneConrainer;
+
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.Set;
+
 public class GameContainer implements Runnable{
 
     private Thread tread;
@@ -16,11 +22,19 @@ public class GameContainer implements Runnable{
     private String title = "engineNo";
     private int fps;
 
+    private SceneConrainer sceneConrainer;
+
+
     public GameContainer(){}
 
-    public GameContainer(AbstractGame abstractGame)
-    {
+    public GameContainer(AbstractGame abstractGame) {
+
         this.abstractGame = abstractGame;
+    }
+    public GameContainer(SceneConrainer sceneConrainer){
+
+        this.sceneConrainer = sceneConrainer;
+
     }
 
     public void start(){
@@ -28,7 +42,17 @@ public class GameContainer implements Runnable{
         renderer = new Renderer(this);
         input = new Input(this);
 
-        abstractGame.setUp(this);
+        if(sceneConrainer != null){ // INIT ALL SCENES
+
+            Set<String> keys = sceneConrainer.getScenes().keySet();
+
+            for (String key : keys)
+              sceneConrainer.getScene(key).setUp(this);
+
+        }
+        else
+            abstractGame.setUp(this);
+
 
         tread = new Thread(this);
         tread.run();
@@ -69,8 +93,11 @@ public class GameContainer implements Runnable{
                 unprocessedTime -= UPDATE_CAP;
                 render = true;
 
-                //abstract game
+                if(sceneConrainer != null)
+                    sceneConrainer.getScene(SceneConrainer.CURRENT_SCENE).update(this,(float)UPDATE_CAP); //TODO :
+                else
                 abstractGame.update(this,(float)UPDATE_CAP);
+
                 input.update();
 
 
@@ -85,8 +112,13 @@ public class GameContainer implements Runnable{
             if(render)
             {
                 renderer.clear();
-                abstractGame.render(this,renderer);
-                //renderer.drawText("FPS : "+fps,0,0,0xff00ffff); //TODO : fix drawText class
+
+
+                if(sceneConrainer != null)
+                    sceneConrainer.getScene(SceneConrainer.CURRENT_SCENE).render(this,renderer);
+                else
+                    abstractGame.render(this,renderer);
+
                 window.update();
                 frames++;
             }else {
