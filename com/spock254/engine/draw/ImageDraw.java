@@ -7,8 +7,8 @@ import com.spock254.engine.interfaces.gfx.IImage;
 
 public class ImageDraw extends Renderer implements IDrawingImage {
 
-    IImage image;
-    // TODO : overload ctr
+    private IImage image;
+
     public ImageDraw(GameContainer gc, IImage image){
         super(gc);
         this.image = image;

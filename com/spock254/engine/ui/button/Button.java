@@ -7,7 +7,6 @@ import com.spock254.engine.interfaces.ui.ButtonClickFunck;
 import com.spock254.engine.interfaces.ui.button.IButton;
 import com.spock254.engine.ui.UIColor;
 
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 public class Button extends BasicButton implements IButton {
@@ -18,41 +17,41 @@ public class Button extends BasicButton implements IButton {
     private int initBtnColor;
     private int initTextColor;
 
-    private ButtonClickFunck buttonClickFunck;
+    private ButtonClickFunck buttonButtonClickFunck;
 
 
     public Button(GameContainer gc, IDrawingShape shape, IDrawingText text, int buttonOffX, int buttonOffY, int buttonW, int buttonH, String buttonText, int textOffX, int textOffY,
-                  UIColor textColor,UIColor btnColor,ButtonClickFunck buttonClickFunck) {
+                  UIColor textColor,UIColor btnColor,ButtonClickFunck buttonButtonClickFunck) {
         super(gc, shape, text, buttonOffX, buttonOffY, buttonW, buttonH, btnColor.getBaseColor(), buttonText, textOffX, textOffY, textColor.getBaseColor());
         this.textColor = textColor;
         this.btnColor = btnColor;
         initBtnColor = btnColor.getBaseColor();
         initTextColor = textColor.getBaseColor();
-        this.buttonClickFunck = buttonClickFunck;
+        this.buttonButtonClickFunck = buttonButtonClickFunck;
     }
 
     public Button(GameContainer gc, IDrawingShape shape, IDrawingText text, int buttonOffX, int buttonOffY, int buttonW, int buttonH, String buttonText,
-                  UIColor textColor,UIColor btnColor,ButtonClickFunck buttonClickFunck) {
+                  UIColor textColor,UIColor btnColor,ButtonClickFunck buttonButtonClickFunck) {
         super(gc, shape, text, buttonOffX, buttonOffY, buttonW, buttonH, btnColor.getBaseColor(), buttonText, textColor.getBaseColor());
         this.textColor = textColor;
         this.btnColor = btnColor;
         initBtnColor = btnColor.getBaseColor();
         initTextColor = textColor.getBaseColor();
-        this.buttonClickFunck = buttonClickFunck;
+        this.buttonButtonClickFunck = buttonButtonClickFunck;
     }
 
-    public void setButtonClickFunck(ButtonClickFunck buttonClickFunck) {
-        this.buttonClickFunck = buttonClickFunck;
+    public void setButtonButtonClickFunck(ButtonClickFunck buttonButtonClickFunck) {
+        this.buttonButtonClickFunck = buttonButtonClickFunck;
     }
 
-    public ButtonClickFunck getButtonClickFunck() {
-        return buttonClickFunck;
+    public ButtonClickFunck getButtonButtonClickFunck() {
+        return buttonButtonClickFunck;
     }
 
     @Override
     public void click(){
         if(isHover() && getGameContainer().getInput().isButtonUp(MouseEvent.BUTTON1))
-            buttonClickFunck.click();
+            buttonButtonClickFunck.click();
     }
 
     @Override

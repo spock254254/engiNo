@@ -15,7 +15,7 @@ public class ImageTitleDraw extends Renderer implements IDrawingImageTitle {
         this.image = imageTile;
         //baseImage = (IImage) image;
     }
-
+    @Override
     public void drawImageTile(int offX, int offY, int tileX, int tileY){
         if(offX < -image.getTileW()) return;
         if(offY < -image.getTileH()) return;
