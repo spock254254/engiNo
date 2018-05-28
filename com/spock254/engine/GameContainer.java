@@ -1,9 +1,8 @@
 package com.spock254.engine;
 
+import com.spock254.engine.interfaces.scene.ISceneConrainer;
 import com.spock254.engine.scene.SceneConrainer;
 
-import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.Set;
 
 public class GameContainer implements Runnable{
@@ -22,7 +21,7 @@ public class GameContainer implements Runnable{
     private String title = "engineNo";
     private int fps;
 
-    private SceneConrainer sceneConrainer;
+    private ISceneConrainer sceneConrainer;
 
 
     public GameContainer(){}
@@ -31,7 +30,7 @@ public class GameContainer implements Runnable{
 
         this.abstractGame = abstractGame;
     }
-    public GameContainer(SceneConrainer sceneConrainer){
+    public GameContainer(ISceneConrainer sceneConrainer){
 
         this.sceneConrainer = sceneConrainer;
 
@@ -42,7 +41,7 @@ public class GameContainer implements Runnable{
         renderer = new Renderer(this);
         input = new Input(this);
 
-        if(sceneConrainer != null){ // INIT ALL SCENES
+        if(sceneConrainer != null){ // init all scenes in game
 
             Set<String> keys = sceneConrainer.getScenes().keySet();
 
@@ -51,7 +50,7 @@ public class GameContainer implements Runnable{
 
         }
         else
-            abstractGame.setUp(this);
+            abstractGame.setUp(this); // if just one scene in game
 
 
         tread = new Thread(this);
