@@ -4,8 +4,9 @@ import com.spock254.engine.GameContainer;
 import com.spock254.engine.draw.RectDraw;
 import com.spock254.engine.interfaces.draw.IDrawingShape;
 import com.spock254.engine.interfaces.draw.IDrawingText;
+import com.spock254.engine.interfaces.ui.button.IBasicButton;
 
-public class BasicButton {
+public class BasicButton implements IBasicButton {
 
     private IDrawingShape shape;
     private IDrawingText text;
@@ -53,114 +54,106 @@ public class BasicButton {
         this.textColor = textColor;
     }
 
+
     public void drawButton(){
 
         shape.drawShape(buttonOffX,buttonOffY,buttonW,buttonH,buttonColor);
         text.drawText(buttonText,textOffX,textOffY,textColor);
-       // if(this.buttonOffX >= gameContainer.getInput().getMouseX()
-        //        && (this.buttonOffX + buttonW) <= gameContainer.getInput().getMouseX())
-
-        //if(buttonOffX <= this.gameContainer.getInput().getMouseX()
-        //        && (buttonOffX+buttonW) >= this.gameContainer.getInput().getMouseX())
-        //    System.out.println("+");
-
-        //System.out.println(buttonOffX + "  :  "+ this.gameContainer.getInput().getMouseX());
-        //System.out.println(gameContainer.getInput().getMouseX()+" : "+gameContainer.getInput().getMouseY());
-
     }
 
+    @Override
     public IDrawingShape getShape() {
         return shape;
     }
-
+    @Override
     public void setShape(IDrawingShape shape) {
         this.shape = shape;
     }
-
+    @Override
     public IDrawingText getText() {
         return text;
     }
-
+    @Override
     public void setText(IDrawingText text) {
         this.text = text;
     }
-
+    @Override
     public GameContainer getGameContainer() {
         return gameContainer;
     }
-
+    @Override
     public void setGameContainer(GameContainer gameContainer) {
         this.gameContainer = gameContainer;
     }
-
+    @Override
     public int getButtonOffX() {
         return buttonOffX;
     }
-
+    @Override
     public void setButtonOffX(int buttonOffX) {
         this.buttonOffX = buttonOffX;
     }
-
+    @Override
     public int getButtonOffY() {
         return buttonOffY;
     }
-
+    @Override
     public void setButtonOffY(int buttonOffY) {
         this.buttonOffY = buttonOffY;
     }
-
+    @Override
     public int getButtonW() {
         return buttonW;
     }
-
+    @Override
     public void setButtonW(int buttonW) {
         this.buttonW = buttonW;
     }
-
+    @Override
     public int getButtonH() {
         return buttonH;
     }
-
+    @Override
     public void setButtonH(int buttonH) {
         this.buttonH = buttonH;
     }
-
+    @Override
     public int getButtonColor() {
         return buttonColor;
     }
-
+    @Override
     public void setButtonColor(int buttonColor) {
         this.buttonColor = buttonColor;
     }
-
+    @Override
     public String getButtonText() {
         return buttonText;
     }
-
+    @Override
     public void setButtonText(String buttonText) {
         this.buttonText = buttonText;
     }
-
+    @Override
     public int getTextOffX() {
         return textOffX;
     }
-
+    @Override
     public void setTextOffX(int textOffX) {
         this.textOffX = textOffX;
     }
-
+    @Override
     public int getTextOffY() {
         return textOffY;
     }
-
+    @Override
     public void setTextOffY(int textOffY) {
         this.textOffY = textOffY;
     }
-
+    @Override
     public int getTextColor() {
         return textColor;
     }
-
+    @Override
     public void setTextColor(int textColor) {
         this.textColor = textColor;
     }
