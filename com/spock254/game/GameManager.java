@@ -6,7 +6,8 @@ import com.spock254.engine.Renderer;
 import com.spock254.engine.draw.RectFilledDraw;
 import com.spock254.engine.draw.TextDraw;
 import com.spock254.engine.gfx.Font;
-import com.spock254.engine.ui.BasicButton;
+import com.spock254.engine.ui.button.BasicButton;
+import com.spock254.engine.ui.button.Button;
 
 public class GameManager extends AbstractGame {
 
@@ -23,9 +24,9 @@ public class GameManager extends AbstractGame {
           //                      10,10,40,20,0xffE6118A,
             //                    "Start",19,17,0xff2B0B1D);
 
-        button2 = new BasicButton(gameContainer,new RectFilledDraw(gameContainer),new TextDraw(gameContainer,new Font("/res/standart.png")),
-                50,10,60,15,0xffE6118A,
-                "Start",0xff2B0B1D);
+        button2 = new Button(gameContainer,new RectFilledDraw(gameContainer),new TextDraw(gameContainer,new Font("/res/standart.png")),
+                11,41,20,15,0xffE6118A,
+                "Start",0xff2B0B1D,0xff9FFFA6);
 
     }
 
