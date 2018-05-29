@@ -1,6 +1,6 @@
 package com.spock254.engine.draw;
 
-import com.spock254.engine.GameContainer;
+import com.spock254.engine.Kernel;
 import com.spock254.engine.Renderer;
 import com.spock254.engine.interfaces.draw.IDrawingImage;
 import com.spock254.engine.interfaces.gfx.IImage;
@@ -9,7 +9,7 @@ public class ImageDraw extends Renderer implements IDrawingImage {
 
     private IImage image;
 
-    public ImageDraw(GameContainer gc, IImage image){
+    public ImageDraw(Kernel gc, IImage image){
         super(gc);
         this.image = image;
     }

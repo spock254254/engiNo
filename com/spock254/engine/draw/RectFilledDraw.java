@@ -1,12 +1,12 @@
 package com.spock254.engine.draw;
 
-import com.spock254.engine.GameContainer;
+import com.spock254.engine.Kernel;
 import com.spock254.engine.Renderer;
 import com.spock254.engine.interfaces.draw.IDrawingShape;
 
 public class RectFilledDraw extends Renderer implements IDrawingShape {
 
-    public RectFilledDraw(GameContainer gc) {
+    public RectFilledDraw(Kernel gc) {
         super(gc);
     }
 

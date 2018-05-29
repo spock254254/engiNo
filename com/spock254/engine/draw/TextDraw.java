@@ -1,6 +1,6 @@
 package com.spock254.engine.draw;
 
-import com.spock254.engine.GameContainer;
+import com.spock254.engine.Kernel;
 import com.spock254.engine.Renderer;
 import com.spock254.engine.interfaces.draw.IDrawingText;
 import com.spock254.engine.gfx.Image;
@@ -10,8 +10,8 @@ public class TextDraw extends Renderer implements IDrawingText {
 
     private IFont font;
 
-    public TextDraw(GameContainer gameContainer, IFont font){
-        super(gameContainer);
+    public TextDraw(Kernel kernel, IFont font){
+        super(kernel);
         this.font = font;
     }
 

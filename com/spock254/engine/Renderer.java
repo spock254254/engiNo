@@ -16,7 +16,7 @@ public class Renderer implements Rendering {
     private  int zDapth = 0;
 
 
-    public Renderer(GameContainer gc){
+    public Renderer(Kernel gc){
         pH = gc.getHeight();
         pW = gc.getWidth();
         p = ((DataBufferInt)gc.getWindow().getImage().getRaster().getDataBuffer()).getData();

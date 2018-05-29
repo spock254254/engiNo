@@ -1,6 +1,6 @@
 package com.spock254.engine.anim;
 
-import com.spock254.engine.GameContainer;
+import com.spock254.engine.Kernel;
 import com.spock254.engine.draw.ImageTitleDraw;
 import com.spock254.engine.interfaces.anim.IAnimation;
 import com.spock254.engine.interfaces.gfx.IImageTile;
@@ -14,7 +14,7 @@ public class Animation extends ImageTitleDraw implements IAnimation {
     private int currentLint = 0;
     private int currentRow = 0;
 
-    public Animation(GameContainer gc, IImageTile imageTile,int animSpeed,int animoffX,int animoffY,int line,int row) {
+    public Animation(Kernel gc, IImageTile imageTile, int animSpeed, int animoffX, int animoffY, int line, int row) {
         super(gc, imageTile);
         this.animSpeed = animSpeed;
         this.animoffX = animoffX;

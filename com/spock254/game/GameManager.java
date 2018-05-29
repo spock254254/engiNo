@@ -1,10 +1,9 @@
 package com.spock254.game;
 
 import com.spock254.engine.AbstractGame;
-import com.spock254.engine.GameContainer;
+import com.spock254.engine.Kernel;
 import com.spock254.engine.interfaces.scene.ISceneConrainer;
 import com.spock254.engine.scene.SceneConrainer;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +20,7 @@ public class GameManager  {
 
         ISceneConrainer sceneConrainer = new SceneConrainer(abstractGameDictionary);
 
-        GameContainer gc = new GameContainer(sceneConrainer);
+        Kernel gc = new Kernel(sceneConrainer);
         gc.start();
     }
 }

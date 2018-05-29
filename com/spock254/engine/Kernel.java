@@ -5,38 +5,38 @@ import com.spock254.engine.scene.SceneConrainer;
 
 import java.util.Set;
 
-public class GameContainer implements Runnable{
+public class Kernel implements Runnable{
 
     private Thread tread;
     private Window window;
     private Renderer renderer;
     private Input input;
     private AbstractGame abstractGame;
-
     private boolean isRunning = false;
     private final double UPDATE_CAP = 1.0/60.0;
-    private int width = 320;//(int)ScreenSize.getSizeScreen().getWidth();
-    private int height = 240;//(int)ScreenSize.getSizeScreen().getHeight();
+    private int width = 320;
+    private int height = 240;
     private float scale = 2f;
     private String title = "engineNo";
     private int fps;
-
     private ISceneConrainer sceneConrainer;
 
+    public Kernel(){
 
-    public GameContainer(){}
+    }
 
-    public GameContainer(AbstractGame abstractGame) {
+    public Kernel(AbstractGame abstractGame) {
 
         this.abstractGame = abstractGame;
     }
-    public GameContainer(ISceneConrainer sceneConrainer){
+    public Kernel(ISceneConrainer sceneConrainer){
 
         this.sceneConrainer = sceneConrainer;
 
     }
 
     public void start(){
+
         window = new Window(this);
         renderer = new Renderer(this);
         input = new Input(this);
@@ -60,7 +60,6 @@ public class GameContainer implements Runnable{
     public void stop(){
 
     }
-
 
     @Override
     public void run() {
@@ -132,7 +131,7 @@ public class GameContainer implements Runnable{
     }
 
     private void dispose(){
-
+        System.out.println("dispose");
     }
 
     public int getWidth() {
@@ -176,4 +175,8 @@ public class GameContainer implements Runnable{
     }
 
     public int getFps(){ return fps; }
+
+    public boolean isRunning() { return isRunning; }
+
+    public void setRunning(boolean running) { isRunning = running; }
 }

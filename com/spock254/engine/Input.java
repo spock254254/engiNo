@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class Input implements KeyListener,MouseListener,MouseMotionListener,MouseWheelListener {
 
-    private GameContainer gameContainer;
+    private Kernel kernel;
 
     private final int NUM_KEYS = 256;
     private boolean[] keys = new boolean[NUM_KEYS];
@@ -17,17 +17,17 @@ public class Input implements KeyListener,MouseListener,MouseMotionListener,Mous
     private int mouseX, mouseY;
     private int scroll;
 
-    public Input(GameContainer gameContainer)
+    public Input(Kernel kernel)
     {
-        this.gameContainer = gameContainer;
+        this.kernel = kernel;
         mouseX = 0;
         mouseY = 0;
         scroll = 0;
 
-        gameContainer.getWindow().getCanvas().addKeyListener(this);
-        gameContainer.getWindow().getCanvas().addMouseListener(this);
-        gameContainer.getWindow().getCanvas().addMouseMotionListener(this);
-        gameContainer.getWindow().getCanvas().addMouseWheelListener(this);
+        kernel.getWindow().getCanvas().addKeyListener(this);
+        kernel.getWindow().getCanvas().addMouseListener(this);
+        kernel.getWindow().getCanvas().addMouseMotionListener(this);
+        kernel.getWindow().getCanvas().addMouseWheelListener(this);
     }
     public void update(){
 
@@ -109,15 +109,15 @@ public class Input implements KeyListener,MouseListener,MouseMotionListener,Mous
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
 
-        mouseX = (int) (mouseEvent.getX() / gameContainer.getScale());
-        mouseY = (int) (mouseEvent.getY() / gameContainer.getScale());
+        mouseX = (int) (mouseEvent.getX() / kernel.getScale());
+        mouseY = (int) (mouseEvent.getY() / kernel.getScale());
     }
 
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
 
-        mouseX = (int) (mouseEvent.getX() / gameContainer.getScale());
-        mouseY = (int) (mouseEvent.getY() / gameContainer.getScale());
+        mouseX = (int) (mouseEvent.getX() / kernel.getScale());
+        mouseY = (int) (mouseEvent.getY() / kernel.getScale());
     }
 
     @Override

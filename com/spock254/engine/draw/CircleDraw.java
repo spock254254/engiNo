@@ -1,15 +1,14 @@
 package com.spock254.engine.draw;
 
-import com.spock254.engine.GameContainer;
+import com.spock254.engine.Kernel;
 import com.spock254.engine.Renderer;
 import com.spock254.engine.interfaces.draw.IDrawingShape;
-import java.awt.*;
 
 public class CircleDraw extends Renderer implements IDrawingShape {
 
     private  double area;
 
-    public CircleDraw(GameContainer gc) {
+    public CircleDraw(Kernel gc) {
         super(gc);
     }
 

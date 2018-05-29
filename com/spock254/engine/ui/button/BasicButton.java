@@ -1,7 +1,6 @@
 package com.spock254.engine.ui.button;
 
-import com.spock254.engine.GameContainer;
-import com.spock254.engine.draw.RectDraw;
+import com.spock254.engine.Kernel;
 import com.spock254.engine.interfaces.draw.IDrawingShape;
 import com.spock254.engine.interfaces.draw.IDrawingText;
 import com.spock254.engine.interfaces.ui.button.IBasicButton;
@@ -10,7 +9,7 @@ public class BasicButton implements IBasicButton {
 
     private IDrawingShape shape;
     private IDrawingText text;
-    private GameContainer gameContainer;
+    private Kernel kernel;
     private int buttonOffX;
     private int buttonOffY;
     private int buttonW;
@@ -21,10 +20,10 @@ public class BasicButton implements IBasicButton {
     private int textColor;
 
 
-    public BasicButton(GameContainer gc,IDrawingShape shape,IDrawingText text,
-                       int buttonOffX, int buttonOffY, int buttonW, int buttonH,int buttonColor,
-                       String buttonText,int textOffX,int textOffY,int textColor) {
-        this.gameContainer = gc;
+    public BasicButton(Kernel gc, IDrawingShape shape, IDrawingText text,
+                       int buttonOffX, int buttonOffY, int buttonW, int buttonH, int buttonColor,
+                       String buttonText, int textOffX, int textOffY, int textColor) {
+        this.kernel = gc;
         this.shape = shape;
         this.text = text;
         this.buttonOffX = buttonOffX;
@@ -37,10 +36,10 @@ public class BasicButton implements IBasicButton {
         this.textOffY = textOffY;
         this.textColor = textColor;
     }
-    public BasicButton(GameContainer gc,IDrawingShape shape,IDrawingText text,
-                       int buttonOffX, int buttonOffY, int buttonW, int buttonH,int buttonColor,
-                       String buttonText,int textColor) {
-        this.gameContainer = gc;
+    public BasicButton(Kernel gc, IDrawingShape shape, IDrawingText text,
+                       int buttonOffX, int buttonOffY, int buttonW, int buttonH, int buttonColor,
+                       String buttonText, int textColor) {
+        this.kernel = gc;
         this.shape = shape;
         this.text = text;
         this.buttonOffX = buttonOffX;
@@ -78,12 +77,12 @@ public class BasicButton implements IBasicButton {
         this.text = text;
     }
     @Override
-    public GameContainer getGameContainer() {
-        return gameContainer;
+    public Kernel getKernel() {
+        return kernel;
     }
     @Override
-    public void setGameContainer(GameContainer gameContainer) {
-        this.gameContainer = gameContainer;
+    public void setKernel(Kernel kernel) {
+        this.kernel = kernel;
     }
     @Override
     public int getButtonOffX() {

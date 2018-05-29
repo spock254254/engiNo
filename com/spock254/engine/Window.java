@@ -21,7 +21,7 @@ public class Window {
     int width = 0;
     int height = 0;
 
-    public Window(GameContainer gc){
+    public Window(Kernel gc){
         image = new BufferedImage(gc.getWidth(),gc.getHeight(),BufferedImage.TYPE_INT_RGB);
         canvas = new Canvas();
         Dimension dimension = new Dimension((int)(gc.getWidth() * gc.getScale()),

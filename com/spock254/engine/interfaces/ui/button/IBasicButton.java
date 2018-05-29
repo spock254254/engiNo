@@ -1,6 +1,6 @@
 package com.spock254.engine.interfaces.ui.button;
 
-import com.spock254.engine.GameContainer;
+import com.spock254.engine.Kernel;
 import com.spock254.engine.interfaces.draw.IDrawingShape;
 import com.spock254.engine.interfaces.draw.IDrawingText;
 
@@ -10,8 +10,8 @@ public interface IBasicButton {
     public void setShape(IDrawingShape shape);
     public IDrawingText getText();
     public void setText(IDrawingText text);
-    public GameContainer getGameContainer();
-    public void setGameContainer(GameContainer gameContainer);
+    public Kernel getKernel();
+    public void setKernel(Kernel kernel);
     public int getButtonOffX();
     public void setButtonOffX(int buttonOffX);
     public int getButtonOffY();
