@@ -9,6 +9,7 @@ import com.spock254.engine.gfx.Font;
 import com.spock254.engine.interfaces.draw.IDrawingShape;
 import com.spock254.engine.interfaces.ui.button.IButton;
 import com.spock254.engine.scene.SceneConrainer;
+import com.spock254.engine.ui.ColorTable;
 import com.spock254.engine.ui.UIColor;
 import com.spock254.engine.ui.button.Button;
 
@@ -22,7 +23,7 @@ public class Scene1 extends AbstractGame {
         circle =  new CircleDraw(kernel);
         button2 = new Button(kernel,new CircleDraw(kernel),new TextDraw(kernel,new Font("/res/standart.png")),
                 50,50,25,30,"Start",41,46,
-                new UIColor(0xff524C3D,0xff7C4E40,0xffF65828,0xffCAB4AE),
+                new UIColor(0xff524C3D,ColorTable.lightsalmon,0xffF65828,0xffCAB4AE),
                 new UIColor(0xff6AF96F,0xffA4F7A6,0xffF5DDA6,0xffD8CEB5),
                 () -> SceneConrainer.CURRENT_SCENE = "2");
     }
