@@ -3,9 +3,9 @@ package com.spock254.engine.ui.button;
 import com.spock254.engine.Kernel;
 import com.spock254.engine.interfaces.draw.IDrawingShape;
 import com.spock254.engine.interfaces.draw.IDrawingText;
-import com.spock254.engine.interfaces.ui.button.IBasicButton;
+import com.spock254.engine.interfaces.ui.button.IUIBasic;
 
-public class BasicButton implements IBasicButton {
+public class BasicButton implements IUIBasic {
 
     private IDrawingShape shape;
     private IDrawingText text;
@@ -53,21 +53,33 @@ public class BasicButton implements IBasicButton {
         this.textColor = textColor;
     }
 
-
-    public void drawButton(){
+    @Override
+    public void drawBasicUI(){
 
         shape.drawShape(buttonOffX,buttonOffY,buttonW,buttonH,buttonColor);
         text.drawText(buttonText,textOffX,textOffY,textColor);
     }
 
     @Override
-    public IDrawingShape getShape() {
+    public IDrawingShape getBaseShape() {
         return shape;
     }
     @Override
-    public void setShape(IDrawingShape shape) {
+    public void setBaseShape(IDrawingShape shape) {
         this.shape = shape;
     }
+
+    @Override
+    public IDrawingShape getUpperShape() {
+        System.out.println("NOT NEED INIT FOR THIS OBJ");
+        return null;
+    }
+
+    @Override
+    public void setUpperShape(IDrawingShape shape) {
+        System.out.println("NOT NEED INIT FOR THIS OBJ");
+    }
+
     @Override
     public IDrawingText getText() {
         return text;
@@ -85,44 +97,44 @@ public class BasicButton implements IBasicButton {
         this.kernel = kernel;
     }
     @Override
-    public int getButtonOffX() {
+    public int getBaseOffX() {
         return buttonOffX;
     }
     @Override
-    public void setButtonOffX(int buttonOffX) {
-        this.buttonOffX = buttonOffX;
+    public void setBaseOffX(int offx) {
+        this.buttonOffX = offx;
     }
     @Override
-    public int getButtonOffY() {
+    public int getBaseOffY() {
         return buttonOffY;
     }
     @Override
-    public void setButtonOffY(int buttonOffY) {
-        this.buttonOffY = buttonOffY;
+    public void setBaseOffY(int offy) {
+        this.buttonOffY = offy;
     }
     @Override
-    public int getButtonW() {
+    public int getBaseW() {
         return buttonW;
     }
     @Override
-    public void setButtonW(int buttonW) {
-        this.buttonW = buttonW;
+    public void setBaseW(int w) {
+        this.buttonW = w;
     }
     @Override
-    public int getButtonH() {
+    public int getBaseH() {
         return buttonH;
     }
     @Override
-    public void setButtonH(int buttonH) {
-        this.buttonH = buttonH;
+    public void setBaseH(int h) {
+        this.buttonH = h;
     }
     @Override
-    public int getButtonColor() {
+    public int getBasColor() {
         return buttonColor;
     }
     @Override
-    public void setButtonColor(int buttonColor) {
-        this.buttonColor = buttonColor;
+    public void setBaseColor(int color) {
+        this.buttonColor = color;
     }
     @Override
     public String getButtonText() {
@@ -133,27 +145,47 @@ public class BasicButton implements IBasicButton {
         this.buttonText = buttonText;
     }
     @Override
-    public int getTextOffX() {
+    public int getUpperOffX() {
         return textOffX;
     }
     @Override
-    public void setTextOffX(int textOffX) {
-        this.textOffX = textOffX;
+    public void setUpperOffX(int offx) {
+        this.textOffX = offx;
     }
     @Override
-    public int getTextOffY() {
+    public int getUpperOffY() {
         return textOffY;
     }
     @Override
-    public void setTextOffY(int textOffY) {
-        this.textOffY = textOffY;
+    public void setUpperOffY(int offy) {
+        this.textOffY = offy;
     }
     @Override
-    public int getTextColor() {
+    public int getUpCollor() {
         return textColor;
     }
     @Override
-    public void setTextColor(int textColor) {
-        this.textColor = textColor;
+    public void setUpColor(int color) {
+        this.textColor = color;
+    }
+
+    @Override
+    public int getUpperW() {
+        return text.getFont().getTextPixelHeight(buttonText);
+    }
+
+    @Override
+    public void setUpperW(int w) {
+        // TODO : throw exception
+    }
+
+    @Override
+    public int getUpperH() {
+        return text.getFont().getTextPixelWeight(buttonText);
+    }
+
+    @Override
+    public void setUpperH(int h) {
+        // TODO : throw exception
     }
 }
