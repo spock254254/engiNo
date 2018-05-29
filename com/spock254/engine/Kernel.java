@@ -1,6 +1,7 @@
 package com.spock254.engine;
 
 import com.spock254.engine.interfaces.scene.ISceneConrainer;
+import com.spock254.engine.save.SavingSystem;
 import com.spock254.engine.scene.SceneConrainer;
 
 import java.util.Set;
@@ -20,6 +21,7 @@ public class Kernel implements Runnable{
     private String title = "engineNo";
     private int fps;
     private ISceneConrainer sceneConrainer;
+    private SavingSystem savingSystem;
 
     public Kernel(){
 
@@ -40,6 +42,7 @@ public class Kernel implements Runnable{
         window = new Window(this);
         renderer = new Renderer(this);
         input = new Input(this);
+        savingSystem = new SavingSystem();
 
         if(sceneConrainer != null){ // init all scenes in game
 
@@ -179,4 +182,8 @@ public class Kernel implements Runnable{
     public boolean isRunning() { return isRunning; }
 
     public void setRunning(boolean running) { isRunning = running; }
+
+    public SavingSystem getSavingSystem() {
+        return savingSystem;
+    }
 }
