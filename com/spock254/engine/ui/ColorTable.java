@@ -12,6 +12,6 @@ public interface ColorTable {
     public static final int red = 0xffFF0000;
     public static final int darkred = 0xff8B0000;
     // https://www.rapidtables.com/web/color/html-color-codes.html
-    // TODO : update color table 
+    // TODO : update color table
 
 }

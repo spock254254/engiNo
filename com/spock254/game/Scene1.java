@@ -5,6 +5,7 @@ import com.spock254.engine.Kernel;
 import com.spock254.engine.Renderer;
 import com.spock254.engine.draw.CircleDraw;
 import com.spock254.engine.draw.TextDraw;
+import com.spock254.engine.draw.order.CircleFillDraw;
 import com.spock254.engine.gfx.Font;
 import com.spock254.engine.interfaces.draw.IDrawingShape;
 import com.spock254.engine.interfaces.ui.button.IButton;
@@ -17,6 +18,7 @@ public class Scene1 extends AbstractGame {
 
     IDrawingShape circle;
     IButton button2;
+    IDrawingShape circleFill;
 
     @Override
     public void setUp(Kernel kernel) {
@@ -26,6 +28,7 @@ public class Scene1 extends AbstractGame {
                 new UIColor(0xff524C3D,ColorTable.lightsalmon,0xffF65828,0xffCAB4AE),
                 new UIColor(0xff6AF96F,0xffA4F7A6,0xffF5DDA6,0xffD8CEB5),
                 () -> SceneConrainer.CURRENT_SCENE = "2");
+        circleFill = new CircleFillDraw(kernel);
     }
 
     @Override
@@ -40,6 +43,7 @@ public class Scene1 extends AbstractGame {
     @Override
     public void render(Kernel kernel, Renderer renderer) {
         circle.drawShape(30,30,30,30,0xffA4F7A6);
+        circleFill.drawShape(100,100,25,0,ColorTable.red);
         button2.drawButton();
     }
 }
