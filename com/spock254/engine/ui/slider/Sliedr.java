@@ -5,8 +5,6 @@ import com.spock254.engine.interfaces.draw.IDrawingShape;
 import com.spock254.engine.interfaces.ui.UIObjectFunction;
 import com.spock254.engine.interfaces.ui.IUIObject;
 import com.spock254.engine.ui.UIColor;
-
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 public class Sliedr extends BasicSlider implements IUIObject {
@@ -15,7 +13,7 @@ public class Sliedr extends BasicSlider implements IUIObject {
     private UIObjectFunction uiObjectFunction;
     private int actionValue;
 
-    private double sliderRange; // range
+    private final double RANGE_COEFFICIENT; 
 
     public Sliedr(Kernel kernel, IDrawingShape sliderLine, IDrawingShape sliderButton,
                   int offXline, int offYline, int offXButton, int offYButton,
@@ -28,7 +26,7 @@ public class Sliedr extends BasicSlider implements IUIObject {
                 buttonH, sliderLineColor, sliderButtonColor);
 
         this.uiObjectFunction = uiObjectFunction;
-        sliderRange = 100 / super.getBaseW();
+        RANGE_COEFFICIENT = 100 / super.getBaseW();
 
     }
 
@@ -40,7 +38,7 @@ public class Sliedr extends BasicSlider implements IUIObject {
                 offYline, lineW, sliderLineColor, sliderButtonColor);
 
         this.uiObjectFunction = uiObjectFunction;
-        sliderRange = 100 / super.getBaseW();
+        RANGE_COEFFICIENT = 100 / super.getBaseW();
     }
 
 
@@ -48,11 +46,15 @@ public class Sliedr extends BasicSlider implements IUIObject {
     public void action() {
         if(isHover() && super.getKernel().getInput().isButton(MouseEvent.BUTTON1)){
 
-            int valueInRange = (super.getUpperOffX() - super.getBaseOffX()) * (int)sliderRange;
+            int valueInRange = (super.getUpperOffX() - super.getBaseOffX()) * (int) RANGE_COEFFICIENT;
+            if(valueInRange == (int) RANGE_COEFFICIENT)
+                valueInRange = 0;
 
             super.setUpperOffX(super.getKernel().getInput().getMouseX());
             this.setActionValue(valueInRange);
-            System.out.println(this.getActionValue());
+            System.out.println(valueInRange);
+            if(this.uiObjectFunction != null)
+                this.uiObjectFunction.click();
         }
 
     }

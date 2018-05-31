@@ -25,7 +25,7 @@ public class Scene1 extends AbstractGame {
         button = new CircleFillDraw(kernel);
 
         slider = new Sliedr(kernel,line,button,50,50,50,
-                new UIColor(ColorTable.darkred),new UIColor(ColorTable.firebrick),() -> System.out.println("Slide..."));
+                new UIColor(ColorTable.darkred),new UIColor(ColorTable.firebrick),null);
     }
 
     @Override
