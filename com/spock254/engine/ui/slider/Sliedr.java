@@ -6,10 +6,16 @@ import com.spock254.engine.interfaces.ui.UIObjectFunction;
 import com.spock254.engine.interfaces.ui.IUIObject;
 import com.spock254.engine.ui.UIColor;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+
 public class Sliedr extends BasicSlider implements IUIObject {
 
-    private int sliderValue;
+
     private UIObjectFunction uiObjectFunction;
+    private int actionValue;
+
+    private double sliderRange; // range
 
     public Sliedr(Kernel kernel, IDrawingShape sliderLine, IDrawingShape sliderButton,
                   int offXline, int offYline, int offXButton, int offYButton,
@@ -22,6 +28,8 @@ public class Sliedr extends BasicSlider implements IUIObject {
                 buttonH, sliderLineColor, sliderButtonColor);
 
         this.uiObjectFunction = uiObjectFunction;
+        sliderRange = 100 / super.getBaseW();
+
     }
 
     public Sliedr(Kernel kernel, IDrawingShape sliderLine, IDrawingShape sliderButton,
@@ -32,11 +40,20 @@ public class Sliedr extends BasicSlider implements IUIObject {
                 offYline, lineW, sliderLineColor, sliderButtonColor);
 
         this.uiObjectFunction = uiObjectFunction;
+        sliderRange = 100 / super.getBaseW();
     }
 
 
     @Override
     public void action() {
+        if(isHover() && super.getKernel().getInput().isButton(MouseEvent.BUTTON1)){
+
+            int valueInRange = (super.getUpperOffX() - super.getBaseOffX()) * (int)sliderRange;
+
+            super.setUpperOffX(super.getKernel().getInput().getMouseX());
+            this.setActionValue(valueInRange);
+            System.out.println(this.getActionValue());
+        }
 
     }
 
@@ -48,7 +65,10 @@ public class Sliedr extends BasicSlider implements IUIObject {
 
     @Override
     public boolean isHover() {
-        return false;
+        return (super.getBaseOffX() <= super.getKernel().getInput().getMouseX()
+                && (super.getBaseOffX()+super.getBaseW()) >= super.getKernel().getInput().getMouseX()
+                && super.getBaseOffY() <= super.getKernel().getInput().getMouseY()
+                && (super.getBaseOffY() + super.getBaseH() >= super.getKernel().getInput().getMouseY()));
     }
 
     @Override
@@ -79,5 +99,15 @@ public class Sliedr extends BasicSlider implements IUIObject {
     @Override
     public void setUpperColor(UIColor color) {
         super.setSliderButtonColor(color);
+    }
+
+    @Override
+    public int getActionValue() {
+        return actionValue;
+    }
+
+    @Override
+    public void setActionValue(int actionValue) {
+        this.actionValue = actionValue;
     }
 }

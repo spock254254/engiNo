@@ -217,6 +217,16 @@ public class BasicSlider implements IUIBasic {
         this.buttonH = h;
     }
 
+    @Override
+    public int getActionValue() {
+        return 0;// TODO : fix base behavior
+    }
+
+    @Override
+    public void setActionValue(int value) {
+        // TODO : fix base behavior
+    }
+
     protected UIColor getSliderLineColor() {
         return sliderLineColor;
     }

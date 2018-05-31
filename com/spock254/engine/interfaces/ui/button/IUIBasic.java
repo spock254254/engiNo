@@ -37,4 +37,6 @@ public interface IUIBasic {
     public void setUpperW(int w);
     public int getUpperH();
     public void setUpperH(int h);
+    public int getActionValue();
+    public void setActionValue(int value);
 }

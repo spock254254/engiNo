@@ -1,4 +1,4 @@
-package com.spock254.engine.draw.order;
+package com.spock254.engine.draw;
 
 import com.spock254.engine.Kernel;
 import com.spock254.engine.Renderer;

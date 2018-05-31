@@ -188,4 +188,14 @@ public class BasicButton implements IUIBasic {
     public void setUpperH(int h) {
         // TODO : throw exception
     }
+
+    @Override
+    public int getActionValue() {
+        return 0;// TODO : fix base behavior
+    }
+
+    @Override
+    public void setActionValue(int value) {
+        // TODO : fix base behavior
+    }
 }

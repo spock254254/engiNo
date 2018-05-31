@@ -4,12 +4,11 @@ import com.spock254.engine.AbstractGame;
 import com.spock254.engine.Kernel;
 import com.spock254.engine.Renderer;
 import com.spock254.engine.draw.RectFilledDraw;
-import com.spock254.engine.draw.order.CircleFillDraw;
+import com.spock254.engine.draw.CircleFillDraw;
 import com.spock254.engine.interfaces.draw.IDrawingShape;
 import com.spock254.engine.interfaces.ui.IUIObject;
 import com.spock254.engine.ui.ColorTable;
 import com.spock254.engine.ui.UIColor;
-import com.spock254.engine.ui.slider.BasicSlider;
 import com.spock254.engine.ui.slider.Sliedr;
 
 public class Scene1 extends AbstractGame {
@@ -31,7 +30,7 @@ public class Scene1 extends AbstractGame {
 
     @Override
     public void update(Kernel kernel, float deltaTime) {
-
+        slider.action();
     }
 
     @Override

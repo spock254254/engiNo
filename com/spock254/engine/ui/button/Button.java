@@ -18,7 +18,7 @@ public class Button extends BasicButton implements IUIObject {
     private int initTextColor;
 
     private UIObjectFunction buttonUIObjectFunction;
-
+    private int actionValue;
 
     public Button(Kernel gc, IDrawingShape shape, IDrawingText text, int buttonOffX, int buttonOffY, int buttonW, int buttonH, String buttonText, int textOffX, int textOffY,
                   UIColor textColor, UIColor btnColor, UIObjectFunction buttonUIObjectFunction) {
@@ -28,6 +28,7 @@ public class Button extends BasicButton implements IUIObject {
         initBtnColor = btnColor.getBaseColor();
         initTextColor = textColor.getBaseColor();
         this.buttonUIObjectFunction = buttonUIObjectFunction;
+        actionValue = 0;
     }
 
     public Button(Kernel gc, IDrawingShape shape, IDrawingText text, int buttonOffX, int buttonOffY, int buttonW, int buttonH, String buttonText,
@@ -38,6 +39,7 @@ public class Button extends BasicButton implements IUIObject {
         initBtnColor = btnColor.getBaseColor();
         initTextColor = textColor.getBaseColor();
         this.buttonUIObjectFunction = buttonUIObjectFunction;
+        actionValue = 0;
     }
     @Override
     public void setButtonUIObjectFunction(UIObjectFunction uiObjectFunction) {
@@ -50,8 +52,12 @@ public class Button extends BasicButton implements IUIObject {
 
     @Override
     public void action(){
-        if(isHover() && getKernel().getInput().isButtonUp(MouseEvent.BUTTON1))
+        if(isHover() && getKernel().getInput().isButtonUp(MouseEvent.BUTTON1)){
             buttonUIObjectFunction.click();
+            setActionValue(1);
+        }else
+            setActionValue(-1);
+
     }
 
     @Override
@@ -98,5 +104,15 @@ public class Button extends BasicButton implements IUIObject {
     @Override
     public void setUpperColor(UIColor color){
         this.textColor = color;
+    }
+
+    @Override
+    public int getActionValue() {
+        return actionValue;
+    }
+
+    @Override
+    public void setActionValue(int actionValue) {
+        this.actionValue = actionValue;
     }
 }
