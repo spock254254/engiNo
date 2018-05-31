@@ -13,7 +13,7 @@ public class Sliedr extends BasicSlider implements IUIObject {
     private UIObjectFunction uiObjectFunction;
     private int actionValue;
 
-    private final double RANGE_COEFFICIENT; 
+    private final double RANGE_COEFFICIENT;
 
     public Sliedr(Kernel kernel, IDrawingShape sliderLine, IDrawingShape sliderButton,
                   int offXline, int offYline, int offXButton, int offYButton,
