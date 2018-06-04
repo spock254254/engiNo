@@ -3,6 +3,7 @@ package com.spock254.game;
 import com.spock254.engine.AbstractGame;
 import com.spock254.engine.Kernel;
 import com.spock254.engine.Renderer;
+import com.spock254.engine.audio.SoundClipBase;
 import com.spock254.engine.draw.RectFilledDraw;
 import com.spock254.engine.draw.CircleFillDraw;
 import com.spock254.engine.interfaces.draw.IDrawingShape;
@@ -11,12 +12,15 @@ import com.spock254.engine.ui.ColorTable;
 import com.spock254.engine.ui.UIColor;
 import com.spock254.engine.ui.slider.Sliedr;
 
+import java.awt.event.KeyEvent;
+
 public class Scene1 extends AbstractGame {
 
     IUIObject slider;
     IDrawingShape line;
     IDrawingShape button;
 
+    SoundClipBase soundClipBase;
 
     @Override
     public void setUp(Kernel kernel) {
@@ -26,11 +30,22 @@ public class Scene1 extends AbstractGame {
 
         slider = new Sliedr(kernel,line,button,50,50,50,
                 new UIColor(ColorTable.darkred),new UIColor(ColorTable.firebrick),null);
+
+        soundClipBase = new SoundClipBase("/res/audio/David_Hilowitz_-_05_-_Solitude.wav");
+        //soundClipBase.setVolume(0.2);
+        soundClipBase.play();
     }
 
     @Override
     public void update(Kernel kernel, float deltaTime) {
         slider.action();
+        soundClipBase.setVolume((double) slider.getActionValue()/100);
+        if(kernel.getInput().isKeyDown(KeyEvent.VK_A)){
+            soundClipBase.getAudioClip().stop();
+            soundClipBase.play();
+        }
+
+
     }
 
     @Override

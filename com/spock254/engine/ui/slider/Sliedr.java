@@ -52,7 +52,6 @@ public class Sliedr extends BasicSlider implements IUIObject {
 
             super.setUpperOffX(super.getKernel().getInput().getMouseX());
             this.setActionValue(valueInRange);
-            System.out.println(valueInRange);
             if(this.uiObjectFunction != null)
                 this.uiObjectFunction.click();
         }

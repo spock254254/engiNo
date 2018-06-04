@@ -12,7 +12,19 @@ public class SoundClipBase {
 
     }
 
-    public void play(){ // test
+    public void play(){
         audioClip.play();
     }
+
+    public void setVolume(double volume){
+        audioClip.setVolume(volume);
+    }
+    public void stop(){
+        audioClip.stop();
+    }
+    public boolean isPlaying(){
+        return audioClip.isPlaying();
+    }
+    //TODO temp
+    public AudioClip getAudioClip(){return audioClip;}
 }
