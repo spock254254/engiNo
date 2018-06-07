@@ -1,8 +1,9 @@
 package com.spock254.engine.audio;
 
+import com.spock254.engine.interfaces.audio.ISoundClipBase;
 import javafx.scene.media.AudioClip;
 
-public class SoundClipBase {
+public class SoundClipBase implements ISoundClipBase {
 
     AudioClip audioClip;
 
@@ -11,20 +12,31 @@ public class SoundClipBase {
         audioClip = new AudioClip(getClass().getResource(path).toString());
 
     }
-
+    @Override
     public void play(){
         audioClip.play();
     }
-
+    @Override
     public void setVolume(double volume){
+
         audioClip.setVolume(volume);
     }
+    @Override
     public void stop(){
         audioClip.stop();
     }
+    @Override
     public boolean isPlaying(){
         return audioClip.isPlaying();
     }
-    //TODO temp
-    public AudioClip getAudioClip(){return audioClip;}
+
+    @Override
+    public double getVolume() {
+        return  audioClip.getVolume();
+    }
+
+    //TODO temp method
+    public AudioClip getAudioClip(){
+        return audioClip;
+    }
 }

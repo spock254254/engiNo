@@ -6,6 +6,7 @@ import com.spock254.engine.Renderer;
 import com.spock254.engine.audio.SoundClipBase;
 import com.spock254.engine.draw.RectFilledDraw;
 import com.spock254.engine.draw.CircleFillDraw;
+import com.spock254.engine.helper.Math;
 import com.spock254.engine.interfaces.draw.IDrawingShape;
 import com.spock254.engine.interfaces.ui.IUIObject;
 import com.spock254.engine.ui.ColorTable;
@@ -30,10 +31,10 @@ public class Scene1 extends AbstractGame {
 
         slider = new Sliedr(kernel,line,button,50,50,50,
                 new UIColor(ColorTable.darkred),new UIColor(ColorTable.firebrick),null);
-
+        System.out.print(Math.normalize(4,66,0,100,50));
         soundClipBase = new SoundClipBase("/res/audio/David_Hilowitz_-_05_-_Solitude.wav");
-        //soundClipBase.setVolume(0.2);
         soundClipBase.play();
+
     }
 
     @Override
